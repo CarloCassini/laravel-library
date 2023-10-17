@@ -7,7 +7,7 @@ use App\Models\Book;
 
 class BookController extends Controller
 {
-    public function getBooks()
+    public function index()
     {
         $books = Book::all();
 
