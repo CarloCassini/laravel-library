@@ -10,6 +10,9 @@
                         <div class="card-header text-center">
                             {{ $book->title }}
                         </div>
+                        <div class="card-header text-center">
+                            {{ $book->title }}
+                        </div>
                         <div class="d-flex">
                             <div class="card-body" style="max-width: 60%">
                                 <ul class="list-unstyled">
