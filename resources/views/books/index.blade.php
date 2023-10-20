@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('main-content')
+    
+<section class="container mt-5">
+<a href="{{ route('books.create') }}" class="btn btn-warning my-3"> create new book</a>
 
 <table class="table">
     <thead>
@@ -29,4 +33,6 @@
         @endforeach
     </tbody>
 </table>
-<a href="{{ route('books.create') }}" class="btn btn-warning"> create new book</a>
+</section>
+
+@endsection
