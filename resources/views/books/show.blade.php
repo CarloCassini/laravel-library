@@ -2,14 +2,13 @@
 
 @section('main-content')
     <section class="container mt-5">
-        <h1>Lista Libri</h1>
-        <div class="row row-cols-2 g-4">
-            {{-- @foreach ($books as $book) --}}
-            <div class="col">
+        <div class="row">
+            <h1 class="mb-3">Sezione Dettagli</h1>
+            <div>
+                <a href="{{ route('books.index') }}" class="btn btn-primary mb-3">GO BACK</a>
+            </div>
+            <div class="col-6 mx-auto">
                 <div class="card">
-                    <div class="card-header text-center">
-                        {{ $book->title }}
-                    </div>
                     <div class="card-header text-center">
                         {{ $book->title }}
                     </div>
@@ -65,10 +64,6 @@
                                     </span>
                                 </li>
                             </ul>
-                        </div>
-
-                        <div class="m-auto">
-                            <a href="#" class="btn btn-primary">DETAIL BOOK</a>
                         </div>
                     </div>
                 </div>
