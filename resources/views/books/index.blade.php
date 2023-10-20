@@ -29,6 +29,9 @@
                 <td>{{ $book->synopsis }}</td>
                 <td>{{ $book->published }}</td>
                 <td>{{ $book->pages }}</td>
+                <td>    
+                    <a href="{{ route('books.show' , $book->id)}}" class="btn btn-primary"> dettaglio </a>
+                </td>
             </tr>
         @endforeach
     </tbody>
