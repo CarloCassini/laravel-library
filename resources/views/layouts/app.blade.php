@@ -15,12 +15,13 @@
 </head>
 
 <body>
+
     @include('partials._navbar')
 
     <main>
         @yield('main-content')
     </main>
-
+    @yield('modals')
 </body>
 
 </html>
