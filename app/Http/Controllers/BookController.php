@@ -59,11 +59,11 @@ class BookController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  \App\Models\Book  $book
-     * @return \Illuminate\Http\Response
+     * * @return \Illuminate\Http\Response
      */
     public function edit(Book $book)
     {
-        //
+        return view("books.edit", compact("book"));
     }
 
     /**
@@ -71,11 +71,13 @@ class BookController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \App\Models\Book  $book
-     * @return \Illuminate\Http\Response
+     * * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Book $book)
     {
-        //
+        $data = $request->all();
+        $book->update($data);
+        return redirect()->route("books.show", $book)->with("success","");
     }
 
     /**
