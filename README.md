@@ -176,3 +176,5 @@ In un forelse stamperò tutti i dati ricevuti
 @endsection
 
 ```
+
+SALUTI DALLO SPAZIO
