@@ -11,13 +11,14 @@
         <div class="row">
             <div class="div mb-3">
                 <a href="{{ route('books.index') }}" class="btn btn-primary">GO BACK</a>
-                <form action="{{ route('books.destroy', $book) }}" method="POST">
-                    @csrf
-                    @method('DELETE')
-                    <button class="btn btn-primary me-2">
-                        <i class="fa-solid fa-trash-can-arrow-up"></i>
-                    </button>
-                </form>
+
+                {{-- MODAL FOR DELTE --}}
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                    data-bs-target="#DeleteModal-{{ $book->id }}">
+                    <i class="fa-solid fa-trash-can-arrow-up"></i>
+                </button>
+
+
             </div>
             <div class="col">
                 <div class="card">
@@ -77,4 +78,34 @@
             </div>
         </div>
     </section>
+@endsection
+
+
+@section('modals')
+    <div class="modal fade" id="DeleteModal-{{ $book->id }}" tabindex="-1" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">STAI ELIMINANDO
+                        <strong>{{ $book->title }}</strong>
+                    </h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Sei sicuro di voler cancellare <strong>"{{ $book->title }}"</strong> dal
+                    DataBase??
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">ANNULLA</button>
+                    {{-- TASTO PER CANCELALRE --}}
+                    <form action="{{ route('books.destroy', $book) }}" method="POST">
+                        @csrf
+                        @method('DELETE')
+                        <button class="btn btn-danger">DELETE</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 @endsection
