@@ -11,6 +11,13 @@
         <div class="row">
             <div class="div mb-3">
                 <a href="{{ route('books.index') }}" class="btn btn-primary">GO BACK</a>
+                <form action="{{ route('books.destroy', $book) }}" method="POST">
+                    @csrf
+                    @method('DELETE')
+                    <button class="btn btn-primary me-2">
+                        <i class="fa-solid fa-trash-can-arrow-up"></i>
+                    </button>
+                </form>
             </div>
             <div class="col">
                 <div class="card">

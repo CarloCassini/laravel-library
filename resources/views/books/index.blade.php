@@ -1,5 +1,11 @@
 @extends('layouts.app')
 
+@section('css')
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+@endsection
+
 @section('main-content')
     <section class="container mt-5">
         <a href="{{ route('books.create') }}" class="btn btn-warning my-3"> create new book</a>
@@ -30,8 +36,19 @@
                         <td>{{ $book->published }}</td>
                         <td>{{ $book->pages }}</td>
                         <td>
-                            <a href="{{ route('books.show', $book->id) }}" class="btn btn-primary me-2"> Dettaglio </a>
-                            <a href="{{ route('books.edit', $book) }}" class="btn btn-primary me-2"> Modifica </a>
+                            <a href="{{ route('books.show', $book->id) }}" class="btn btn-primary me-2">
+                                <i class="fa-solid fa-eye"></i>
+                            </a>
+                            <a href="{{ route('books.edit', $book) }}" class="btn btn-primary me-2">
+                                <i class="fa-solid fa-pen"></i>
+                            </a>
+                            <form action="{{ route('books.destroy', $book) }}" method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <button class="btn me-2">
+                                    <i class="fa-solid fa-trash-can-arrow-up"></i>
+                                </button>
+                            </form>
                         </td>
                     </tr>
                 @endforeach
