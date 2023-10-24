@@ -4,9 +4,18 @@
     <section class="container mt-5">
         <div class="row">
             <h1 class="mb-3">Sezione Dettagli</h1>
-            <div>
-                <a href="{{ route('admin.books.index') }}" class="btn btn-primary mb-3">GO BACK</a>
+            {{-- bottoni --}}
+            <div class="d-flex">
+                <div>
+                    <a href="{{ route('admin.books.index') }}" class="btn btn-primary mb-3 me-3">GO BACK</a>
+                </div>
+                <div>
+                    <a href="{{ route('admin.books.edit', $book) }}" class="btn btn-primary mb-3 me-3">
+                        MODIFY
+                    </a>
+                </div>
             </div>
+
             <div class="col-6 mx-auto">
                 <div class="card">
                     <div class="card-header text-center">
