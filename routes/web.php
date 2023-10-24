@@ -21,6 +21,10 @@ Route::get('/', function () {
     return view('home', compact('title'));
 })->name('home');
 
+Route::get('/login', function () {
+    return view('auth.login');
+})->name('ciccio');
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');

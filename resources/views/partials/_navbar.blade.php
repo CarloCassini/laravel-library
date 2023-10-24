@@ -12,6 +12,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <!-- Left Side Of Navbar -->
             <ul class="navbar-nav me-auto">
+    
               <a class="navbar-brand" href="{{ route('home') }}">Navbar</a>
               <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavId"
                   aria-controls="collapsibleNavId" aria-expanded="false" aria-label="Toggle navigation">
@@ -25,10 +26,11 @@
                                   class="visually-hidden">(current)</span></a>
                       </li>
                       <li class="nav-item">
-                          <a class="nav-link {{ Route::currentRouteName() == 'admin.books.index' ? 'active' : '' }}"
-                              href="{{ route('admin.books.index') }}" aria-current="page">LIBRI<span
-                                  class="visually-hidden">(current)</span></a>
-                      </li>
+                        <a class="nav-link {{ Route::currentRouteName() == 'admin.books.index' ? 'active' : '' }}"
+                            href="{{ route('admin.books.index') }}" aria-current="page">LIBRI<span
+                                class="visually-hidden">(current)</span></a>
+                    </li>
+                    
       
       
       
