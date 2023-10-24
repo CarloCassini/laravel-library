@@ -17,8 +17,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
-});
+    $title = 'Book Cafè';
+    return view('home', compact('title'));
+})->name('home');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -37,7 +38,6 @@ Route::middleware('auth')
     ->group(function () {
 
         Route::resource('books', BookController::class);
-
     });
 
 require __DIR__ . '/auth.php';

@@ -10,7 +10,7 @@
     <section class="container mt-5">
         <div class="row">
             <div class="div mb-3">
-                <a href="{{ route('books.index') }}" class="btn btn-primary">GO BACK</a>
+                <a href="{{ route('admin.books.index') }}" class="btn btn-primary">GO BACK</a>
 
                 {{-- MODAL FOR DELTE --}}
                 <button type="button" class="btn btn-primary" data-bs-toggle="modal"
@@ -25,7 +25,7 @@
                     <div class="card-header text-center">
                         <h3>Inserisci Libro</h3>
                     </div>
-                    <form action="{{ route('books.update', $book) }}" method="POST" class="card-body">
+                    <form action="{{ route('admin.books.update', $book) }}" method="POST" class="card-body">
                         @csrf
                         @method('PUT')
                         <div class="d-flex">
@@ -99,7 +99,7 @@
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">ANNULLA</button>
                     {{-- TASTO PER CANCELALRE --}}
-                    <form action="{{ route('books.destroy', $book) }}" method="POST">
+                    <form action="{{ route('admin.books.destroy', $book) }}" method="POST">
                         @csrf
                         @method('DELETE')
                         <button class="btn btn-danger">DELETE</button>
