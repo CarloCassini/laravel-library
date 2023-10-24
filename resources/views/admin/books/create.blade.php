@@ -10,14 +10,14 @@
     <section class="container mt-5">
         <div class="row">
             <div class="div mb-3">
-                <a href="{{ route('books.index') }}" class="btn btn-primary">GO BACK</a>
+                <a href="{{ route('admin.books.index') }}" class="btn btn-primary">GO BACK</a>
             </div>
             <div class="col">
                 <div class="card">
                     <div class="card-header text-center">
                         <h3>Inserisci Libro</h3>
                     </div>
-                    <form action="{{ route('books.store') }}" method="POST" class="card-body">
+                    <form action="{{ route('admin.books.store') }}" method="POST" class="card-body">
                         @csrf
                         <div class="d-flex">
                             <div class="mb-3 me-2 col">

@@ -5,7 +5,7 @@
         <div class="row">
             <h1 class="mb-3">Sezione Dettagli</h1>
             <div>
-                <a href="{{ route('books.index') }}" class="btn btn-primary mb-3">GO BACK</a>
+                <a href="{{ route('admin.books.index') }}" class="btn btn-primary mb-3">GO BACK</a>
             </div>
             <div class="col-6 mx-auto">
                 <div class="card">

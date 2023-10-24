@@ -8,7 +8,7 @@
 
 @section('main-content')
     <section class="container mt-5">
-        <a href="{{ route('books.create') }}" class="btn btn-warning my-3"> create new book</a>
+        <a href="{{ route('admin.books.create') }}" class="btn btn-warning my-3"> create new book</a>
 
         <table class="table">
             <thead>
@@ -36,14 +36,14 @@
                         <td>{{ $book->published }}</td>
                         <td>{{ $book->pages }}</td>
                         <td>
-                            <a href="{{ route('books.show', $book->id) }}" class="btn me-2">
+                            <a href="{{ route('admin.books.show', $book->id) }}" class="btn me-2">
                                 <i class="fa-solid fa-eye"></i>
                             </a>
-                            <a href="{{ route('books.edit', $book) }}" class="btn me-2">
+                            <a href="{{ route('admin.books.edit', $book) }}" class="btn me-2">
                                 <i class="fa-solid fa-pen"></i>
                             </a>
-                            {{-- MODAL FOR DELTE --}}
-                            <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                            {{-- MODAL FOR DELETE --}}
+                            <button class="btn btn-primary" data-bs-toggle="modal"
                                 data-bs-target="#DeleteModal-{{ $book->id }}">
                                 <i class="fa-solid fa-trash-can-arrow-up"></i>
                             </button>
@@ -52,6 +52,10 @@
                 @endforeach
             </tbody>
         </table>
+
+        <div>
+            {{ $books->links('pagination::bootstrap-5') }}
+        </div>
     </section>
 @endsection
 
@@ -74,7 +78,7 @@
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">ANNULLA</button>
                         {{-- TASTO PER CANCELALRE --}}
-                        <form action="{{ route('books.destroy', $book) }}" method="POST">
+                        <form action="{{ route('admin.books.destroy', $book) }}" method="POST">
                             @csrf
                             @method('DELETE')
                             <button class="btn btn-danger">DELETE</button>

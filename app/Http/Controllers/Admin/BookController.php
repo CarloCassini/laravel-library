@@ -15,8 +15,8 @@ class BookController extends Controller
      */
     public function index()
     {
-        $books = Book::all();
-        return view('books.index', compact('books'));
+        $books = Book::paginate(10);
+        return view('admin.books.index', compact('books'));
     }
 
     /**
@@ -26,7 +26,7 @@ class BookController extends Controller
      */
     public function create()
     {
-        return view('books.create');
+        return view('admin.books.create');
     }
 
     /**
@@ -41,7 +41,7 @@ class BookController extends Controller
         $book = new Book();
         $book->fill($data);
         $book->save();
-        return redirect()->route('books.show', $book)->with('success', '');
+        return redirect()->route('admin.books.show', $book)->with('success', '');
     }
 
     /**
@@ -52,7 +52,7 @@ class BookController extends Controller
      */
     public function show(Book $book)
     {
-        return view("books.show", compact("book"));
+        return view("admin.books.show", compact("book"));
     }
 
     /**
@@ -63,7 +63,7 @@ class BookController extends Controller
      */
     public function edit(Book $book)
     {
-        return view("books.edit", compact("book"));
+        return view("admin.books.edit", compact("book"));
     }
 
     /**
@@ -77,7 +77,7 @@ class BookController extends Controller
     {
         $data = $request->all();
         $book->update($data);
-        return redirect()->route("books.show", $book)->with("success", "");
+        return redirect()->route("admin.books.show", $book)->with("success", "");
     }
 
     /**
@@ -89,6 +89,6 @@ class BookController extends Controller
     public function destroy(Book $book)
     {
         $book->delete();
-        return redirect()->route("books.index")->with("success", "");
+        return redirect()->route("admin.books.index")->with("success", "");
     }
 }
