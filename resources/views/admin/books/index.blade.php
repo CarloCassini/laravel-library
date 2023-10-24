@@ -36,17 +36,19 @@
                         <td>{{ $book->published }}</td>
                         <td>{{ $book->pages }}</td>
                         <td>
-                            <a href="{{ route('admin.books.show', $book->id) }}" class="btn me-2">
-                                <i class="fa-solid fa-eye"></i>
-                            </a>
-                            <a href="{{ route('admin.books.edit', $book) }}" class="btn me-2">
-                                <i class="fa-solid fa-pen"></i>
-                            </a>
-                            {{-- MODAL FOR DELETE --}}
-                            <button class="btn btn-primary" data-bs-toggle="modal"
-                                data-bs-target="#DeleteModal-{{ $book->id }}">
-                                <i class="fa-solid fa-trash-can-arrow-up"></i>
-                            </button>
+                            <div class="d-flex">         
+                             <a href="{{ route('admin.books.show', $book->id) }}" class="btn me-1">
+                                 <i class="fa-solid fa-eye"></i>
+                              </a>
+                                <a href="{{ route('admin.books.edit', $book) }}" class="btn me-1">
+                                    <i class="fa-solid fa-pen"></i>
+                             </a>
+                             {{-- MODAL FOR DELETE --}}
+                              <button class="btn btn-primary me-1" data-bs-toggle="modal"
+                                    data-bs-target="#DeleteModal-{{ $book->id }}">
+                                   <i class="fa-solid fa-trash-can-arrow-up"></i>
+                             </button>
+                           </div>
                         </td>
                     </tr>
                 @endforeach
