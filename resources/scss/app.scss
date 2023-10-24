@@ -1,8 +1,1 @@
-@use "./partials/variables" as *;
-@use "./partials/mixins" as *;
-
-@import "~bootstrap/scss/bootstrap";
-
-h1 {
-    color: $primary_color;
-}
+@import '~bootstrap/scss/bootstrap'
