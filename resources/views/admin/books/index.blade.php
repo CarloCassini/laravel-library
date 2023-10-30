@@ -15,9 +15,9 @@
                 <tr>
                     <th scope="col">ID</th>
                     <th scope="col">Lista Libri</th>
+                    <th scope="col">Genere</th>
                     <th scope="col">Autore</th>
                     <th scope="col">Editore</th>
-                    <th scope="col">Genere</th>
                     <th scope="col">Sinossi</th>
                     <th scope="col">Published</th>
                     <th scope="col">Pagine</th>
@@ -29,26 +29,26 @@
                     <tr>
                         <th scope="row">{{ $book->id }}</th>
                         <td>{{ $book->title }}</td>
+                        <td>{{ $book->genre?->name }}</td>
                         <td>{{ $book->author }}</td>
                         <td>{{ $book->editor }}</td>
-                        <td>{{ $book->genre }}</td>
                         <td>{{ $book->synopsis }}</td>
                         <td>{{ $book->published }}</td>
                         <td>{{ $book->pages }}</td>
                         <td>
-                            <div class="d-flex">         
-                             <a href="{{ route('admin.books.show', $book->id) }}" class="btn me-1">
-                                 <i class="fa-solid fa-eye"></i>
-                              </a>
+                            <div class="d-flex">
+                                <a href="{{ route('admin.books.show', $book->id) }}" class="btn me-1">
+                                    <i class="fa-solid fa-eye"></i>
+                                </a>
                                 <a href="{{ route('admin.books.edit', $book) }}" class="btn me-1">
                                     <i class="fa-solid fa-pen"></i>
-                             </a>
-                             {{-- MODAL FOR DELETE --}}
-                              <button class="btn btn-primary me-1" data-bs-toggle="modal"
+                                </a>
+                                {{-- MODAL FOR DELETE --}}
+                                <button class="btn btn-primary me-1" data-bs-toggle="modal"
                                     data-bs-target="#DeleteModal-{{ $book->id }}">
-                                   <i class="fa-solid fa-trash-can-arrow-up"></i>
-                             </button>
-                           </div>
+                                    <i class="fa-solid fa-trash-can-arrow-up"></i>
+                                </button>
+                            </div>
                         </td>
                     </tr>
                 @endforeach
