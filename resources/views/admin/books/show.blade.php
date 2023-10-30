@@ -45,7 +45,7 @@
                                         Genere :
                                     </strong>
                                     <span>
-                                        {{ $book->genre }}
+                                        {{ $book->genre?->name }}
                                     </span>
                                 </li>
                                 <li>
@@ -77,7 +77,6 @@
                     </div>
                 </div>
             </div>
-            {{-- @endforeach --}}
         </div>
     </section>
 @endsection
