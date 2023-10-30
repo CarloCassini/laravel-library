@@ -4,7 +4,10 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Book;
+use App\Models\Genre;
 use Illuminate\Http\Request;
+
+use App\Http\Requests\CreateBookRequest;
 
 class BookController extends Controller
 {
@@ -25,19 +28,20 @@ class BookController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {
-        return view('admin.books.create');
+    { 
+        $genres = Genre::all();
+        return view('admin.books.create', compact('genres'));
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param  \Illuminate\Http\CreateBookRequest  $request
+     * *@return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreateBookRequest $request)
     {
-        $data = $request->all();
+        $data = $request->validated();
         $book = new Book();
         $book->fill($data);
         $book->save();

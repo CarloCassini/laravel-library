@@ -34,11 +34,22 @@
                                 <input type="text" class="form-control" id="editor" name="editor">
                             </div>
                         </div>
-                        <div class="d-flex">
-                            <div class="mb-3 me-2 col">
-                                <label for="genre" class="form-label">Genere</label>
-                                <input type="text" class="form-control" id="genre" name="genre">
-                            </div>
+                        <div>
+                            <label for="genre_id" class="form-label">Genere</label>
+                            <select name="genre_id" id="genre_id"
+                                class="form-select @error('genre_id') is-invalid @enderror">
+                                <option value="">Nessun Genere</option>
+                                @foreach ($genres as $genre)
+                                    <option value="{{ $genre->id }}" @if (old('genre_id') == $genre->id) selected @endif>
+                                        {{ $genre->name }}
+                                    </option>
+                                @endforeach
+                            </select>
+                            @error('genre_id')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                            @enderror
                             <div class="mb-3 me-2 col">
                                 <label for="synopsis" class="form-label">Synopsis</label>
                                 <input type="text" class="form-control" id="synopsis" name="synopsis">

@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class CreateBookRequest extends FormRequest
 {
@@ -27,7 +28,8 @@ class CreateBookRequest extends FormRequest
             'title' => ['required', 'string'],
             'author' => ['required', 'string'],
             'editor' => ['required', 'string'],
-            'genre' => ['required', 'string'],
+            'synopsis'=>['required', 'string'], 
+            'genre_id' => ['nullable', 'integer', 'exists:genres,id'],
             'published' => ['required'],
             'pages' => ['required', 'integer'],
         ];
@@ -39,15 +41,18 @@ class CreateBookRequest extends FormRequest
             'title.required' => 'Titolo necessario',
             'author.required' => 'Autore necessario',
             'editor.required' => 'Editore necessario',
-            'genre.required' => 'Genere necessario',
+            'synopsis.required' => 'Sinossi necessaria',
             'published.required' => 'Data di pubblicazione necessarie',
             'pages.required' => 'Numero pagine necessario',
 
             'title.string' => 'Titolo deve essere una stringa',
             'author.string' => 'Autore deve essere una string',
             'editor.string' => 'Editore deve essere una stringa',
-            'genre.string' => 'Genere deve essere una stringa',
+            'synopsis.string' => 'La sinossi deve essere una stringa',
             'pages.integer' => 'Numero pagine deve essere un numero',
+
+            'genre.integer' => 'Il Genere inserito non è valido',
+            'genre.exists' => 'Il genere non è valido',
         ];
     }
 }
