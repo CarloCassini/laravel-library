@@ -22,6 +22,7 @@ class DatabaseSeeder extends Seeder
     // ]);
 
     $this->call([
+      GenreSeeder::class,
       BookSeeder::class,
       UserSeeder::class
     ]);

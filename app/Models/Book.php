@@ -9,6 +9,10 @@ class Book extends Model
 {
     use HasFactory;
 
+    public function genre(){
+        return $this->belongsTo(Genre::class);
+    }
+
     protected $fillable = [
 
         'title',
