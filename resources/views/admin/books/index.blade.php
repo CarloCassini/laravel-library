@@ -21,6 +21,7 @@
                     <th scope="col">Sinossi</th>
                     <th scope="col">Published</th>
                     <th scope="col">Pagine</th>
+                    <th scope="col">typologies</th>
                     <th scope="col"></th>
                 </tr>
             </thead>
@@ -35,6 +36,13 @@
                         <td>{{ $book->synopsis }}</td>
                         <td>{{ $book->published }}</td>
                         <td>{{ $book->pages }}</td>
+
+                        <td>
+                            @foreach ($book->typologies as $typology)
+                                <span class="badge"
+                                    @if ($typology->color) style = 'background-color: {{ $typology->color }}' @endif>{{ $typology->format }}</span>
+                            @endforeach
+                        </td>
                         <td>
                             <div class="d-flex">
                                 <a href="{{ route('admin.books.show', $book->id) }}" class="btn me-1">
