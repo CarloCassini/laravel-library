@@ -39,7 +39,8 @@
 
                         <td>
                             @foreach ($book->typologies as $typology)
-                                {{ $typology->format }}
+                                <span class="badge"
+                                    @if ($typology->color) style = 'background-color: {{ $typology->color }}' @endif>{{ $typology->format }}</span>
                             @endforeach
                         </td>
                         <td>
