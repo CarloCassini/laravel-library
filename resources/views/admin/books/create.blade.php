@@ -63,6 +63,28 @@
                                 <input type="number" class="form-control" id="pages" name="pages">
                             </div>
                         </div>
+                        <div>
+                            ciccio
+                            <label class="form-label">Typologies</label>
+
+                            <div class="form-check @error('typologies') is-invalid @enderror p-0">
+                                @foreach ($typologies as $typology)
+                                    <input type="checkbox" id="Typology-{{ $typology->id }}" value="{{ $typology->id }}"
+                                        name="typologies[]" class="form-check-control"
+                                        @if (in_array($typology->id, old('typologies', $book_typologies ?? []))) checked @endif>
+                                    <label for="typology-{{ $typology->id }}">
+                                        {{ $typology->format }}
+                                    </label>
+                                    <br>
+                                @endforeach
+                            </div>
+
+                            @error('typologies')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+                        </div>
                         <div class="text-center mt-4">
                             <button type="submit" class="btn btn-success px-5">INVIA</button>
                         </div>

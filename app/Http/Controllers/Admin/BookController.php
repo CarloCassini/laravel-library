@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Book;
 use App\Models\Genre;
+use App\Models\Typology;
 use Illuminate\Http\Request;
 
 use App\Http\Requests\CreateBookRequest;
@@ -28,9 +29,11 @@ class BookController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    { 
+    {
+
+        $typologies = Typology::all();
         $genres = Genre::all();
-        return view('admin.books.create', compact('genres'));
+        return view('admin.books.create', compact('genres', 'typologies'));
     }
 
     /**
@@ -67,7 +70,8 @@ class BookController extends Controller
      */
     public function edit(Book $book)
     {
-        return view("admin.books.edit", compact("book"));
+        $typologies = Typology::all();
+        return view("admin.books.edit", compact("book", 'typologies'));
     }
 
     /**
