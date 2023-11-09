@@ -70,8 +70,9 @@ class BookController extends Controller
      */
     public function edit(Book $book)
     {
+        $genres = Genre::all();
         $typologies = Typology::all();
-        return view("admin.books.edit", compact("book", 'typologies'));
+        return view("admin.books.edit", compact("book", 'typologies', 'genres'));
     }
 
     /**
