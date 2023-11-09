@@ -28,10 +28,11 @@ class CreateBookRequest extends FormRequest
             'title' => ['required', 'string'],
             'author' => ['required', 'string'],
             'editor' => ['required', 'string'],
-            'synopsis'=>['required', 'string'], 
+            'synopsis' => ['required', 'string'],
             'genre_id' => ['nullable', 'integer', 'exists:genres,id'],
             'published' => ['required'],
             'pages' => ['required', 'integer'],
+            'typologies' => ['nullable', 'exists:typologies,id'],
         ];
     }
 
@@ -53,6 +54,8 @@ class CreateBookRequest extends FormRequest
 
             'genre.integer' => 'Il Genere inserito non è valido',
             'genre.exists' => 'Il genere non è valido',
+
+            'typologies.exists' => 'la tipologia scelta non è contemplata',
         ];
     }
 }
