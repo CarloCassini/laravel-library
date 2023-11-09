@@ -64,12 +64,13 @@
                             </div>
                         </div>
                         <div>
-                            ciccio
-                            <label class="form-label">Typologies</label>
 
-                            <div class="form-check @error('typologies') is-invalid @enderror p-0">
+                            {{-- add checkbox --}}
+                            <label class="form-label">Typology</label>
+
+                            <div class="form-check @error('typology') is-invalid @enderror p-0">
                                 @foreach ($typologies as $typology)
-                                    <input type="checkbox" id="Typology-{{ $typology->id }}" value="{{ $typology->id }}"
+                                    <input type="checkbox" id="typology-{{ $typology->id }}" value="{{ $typology->id }}"
                                         name="typologies[]" class="form-check-control"
                                         @if (in_array($typology->id, old('typologies', $book_typologies ?? []))) checked @endif>
                                     <label for="typology-{{ $typology->id }}">
