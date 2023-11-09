@@ -72,6 +72,15 @@
                                         {{ $book->pages }}
                                     </span>
                                 </li>
+                                <li>
+                                    <strong>Tags:</strong>
+                                    @forelse ($book->typologies as $typology)
+                                        <span class="badge"
+                                            @if ($typology->color) style = 'background-color: {{ $typology->color }}' @endif>{{ $typology->format }}</span>
+                                    @empty
+                                        Nessuna tipologia associata
+                                    @endforelse
+                                </li>
                             </ul>
                         </div>
                     </div>
