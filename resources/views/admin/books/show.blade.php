@@ -73,7 +73,7 @@
                                     </span>
                                 </li>
                                 <li>
-                                    <strong>Tags:</strong>
+                                    <strong>typologies:</strong>
                                     @forelse ($book->typologies as $typology)
                                         <span class="badge"
                                             @if ($typology->color) style = 'background-color: {{ $typology->color }}' @endif>{{ $typology->format }}</span>

@@ -64,7 +64,6 @@
                             </div>
                         </div>
                         <div>
-
                             {{-- add checkbox --}}
                             <label class="form-label">Typology</label>
 

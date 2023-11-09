@@ -7,7 +7,21 @@
 @endsection
 
 @section('main-content')
-    <section class="container mt-5">
+    <div class="container mt-3">
+        {{-- per gli errori --}}
+        @if ($errors->any())
+            <div class="alert alert-warning">
+                <h5>correggi i seguenti errori</h5>
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+
+    </div>
+    <section class="container mt-3">
         <div class="row">
             <div class="div mb-3">
                 <a href="{{ route('admin.books.index') }}" class="btn btn-primary">GO BACK</a>
@@ -80,6 +94,31 @@
                                     value="{{ $book->pages }}">
                             </div>
                         </div>
+                        <label class="form-label ">Typology</label>
+                        {{-- todo -> inserire checkbox --}}
+                        {{-- add checkbox --}}
+                        <div class="form-check @error('typology') is-invalid @enderror p-0">
+                            <div class="d-flex ">
+                                @foreach ($typologies as $typology)
+                                    <div class="me-3">
+
+                                        <input type="checkbox" id="typology-{{ $typology->id }}"
+                                            value="{{ $typology->id }}" name="typologies[]" class="form-check-control"
+                                            @if (in_array($typology->id, old('typologies', $book_typologies ?? []))) checked @endif>
+                                        <label for="typology-{{ $typology->id }}">
+                                            {{ $typology->format }}
+                                        </label>
+                                    </div>
+                                @endforeach
+                            </div>
+
+                            @error('typologies')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+                        </div>
+
 
                         <div class="text-center mt-4">
                             <button type="submit" class="btn btn-success px-5">INVIA</button>

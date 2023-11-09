@@ -9,6 +9,7 @@ use App\Models\Typology;
 use Illuminate\Http\Request;
 
 use App\Http\Requests\CreateBookRequest;
+use App\Http\Requests\UpdateBookRequest;
 
 use Illuminate\Support\Arr;
 
@@ -76,7 +77,8 @@ class BookController extends Controller
     {
         $genres = Genre::all();
         $typologies = Typology::all();
-        return view("admin.books.edit", compact("book", 'typologies', 'genres'));
+        $book_typologies = $book->typologies->pluck('id')->toArray();
+        return view("admin.books.edit", compact("book", 'typologies', 'genres', 'book_typologies'));
     }
 
     /**
@@ -86,10 +88,16 @@ class BookController extends Controller
      * @param  \App\Models\Book  $book
      * * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Book $book)
+    public function update(UpdateBookRequest $request, Book $book)
     {
-        $data = $request->all();
+        $data = $request->Validated();
         $book->update($data);
+
+        if (Arr::exists($data, "typologies"))
+            $book->typologies()->sync($data["typologies"]);
+        else
+            $book->typologies()->detach();
+
         return redirect()->route("admin.books.show", $book)->with("success", "");
     }
 
@@ -97,10 +105,11 @@ class BookController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  \App\Models\Book  $book
-     * @return \Illuminate\Http\Response
+     ** @return \Illuminate\Http\Response
      */
     public function destroy(Book $book)
     {
+        $book->typologies()->detach();
         $book->delete();
         return redirect()->route("admin.books.index")->with("success", "");
     }
