@@ -10,6 +10,7 @@ use App\Models\Book;
 
 class Typology extends Model
 {
+    protected $hidden = ['pivot'];
 
     public function books()
     {
